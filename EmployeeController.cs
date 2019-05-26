@@ -12,15 +12,42 @@ namespace MVC_crud_Employee.Controllers
         EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
 
         // GET: /<controller>/
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
             List<Employee> lstEmployee = new List<Employee>();
             lstEmployee = objemployee.GetAllEmployees().ToList();
-
+            if (search != "" && search !=null)
+            {
+                if (searchBy == "Gender")
+                {
+                    return View(lstEmployee.Where(x => x.Gender == search || search == null).ToList());
+                }
+                else
+                {
+                    return View(lstEmployee.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+                }
+            }
             return View(lstEmployee);
         }
+        [HttpPost]
+        public ActionResult Search(string searchBy, string search)
+        {
+            List<Employee> lstEmployee = new List<Employee>();
+            lstEmployee = objemployee.GetAllEmployees().ToList();
+            if (search != "")
+            {
+                if (searchBy == "Gender")
+                {
+                    return View(lstEmployee.Where(x => x.Gender == search || search == null).ToList());
+                }
+                else
+                {
+                    return View(lstEmployee.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+                }
+            }
 
-
+            return View("Index",lstEmployee);
+        }
 
 
         [HttpGet]

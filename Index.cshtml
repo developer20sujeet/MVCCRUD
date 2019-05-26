@@ -7,9 +7,20 @@
 <h2>Index</h2>
 
 <p>
+
+    @using (@Html.BeginForm("Index", "Employee", FormMethod.Get))
+    {
+        <b>Search By:</b>
+        @Html.RadioButton("searchBy", "Name", true) <text>Name</text>
+        @Html.RadioButton("searchBy", "Gender") <text>Gender</text><br />
+        @Html.TextBox("search") 
+        <input type="submit" value="search" />
+    }
+
     @Html.ActionLink("Create New", "Create")
+
 </p>
-<table>
+<table  cellpadding="1" cellspacing="1" border="2">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -23,29 +34,30 @@
         <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
-        <th></th>
+        <th>Operation</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
