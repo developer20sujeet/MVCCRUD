@@ -1,0 +1,17 @@
+USE [MVCCRUD]
+GO
+SET IDENTITY_INSERT [dbo].[tblEmployee] ON 
+
+GO
+INSERT [dbo].[tblEmployee] ([EmployeeId], [Name], [City], [Department], [Gender]) VALUES (1, N'sujeet', N'kolkata', N'IT', N'Male')
+GO
+INSERT [dbo].[tblEmployee] ([EmployeeId], [Name], [City], [Department], [Gender]) VALUES (2, N'Amar', N'kolkata', N'Marketing', N'Male')
+GO
+INSERT [dbo].[tblEmployee] ([EmployeeId], [Name], [City], [Department], [Gender]) VALUES (3, N'Kajal', N'Mumbai', N'Finance', N'Female')
+GO
+INSERT [dbo].[tblEmployee] ([EmployeeId], [Name], [City], [Department], [Gender]) VALUES (4, N'Ragul', N'Banglore', N'Goverment', N'Male')
+GO
+INSERT [dbo].[tblEmployee] ([EmployeeId], [Name], [City], [Department], [Gender]) VALUES (5, N'Radha', N'Chennai', N'IT', N'Female')
+GO
+SET IDENTITY_INSERT [dbo].[tblEmployee] OFF
+GO
